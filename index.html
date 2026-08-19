@@ -1,11 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Minha primeira página HTML</title>
 </head>
 <body>
-    
+
+    <!-- Cabecalho -->
+    <header>
+        <h1>
+            Minha primeira pagina WEB - HTML
+        </h1>
+    </header>
+
+    <!-- Conteudo principal -->
+    <main>
+        <!-- Lista ordenada e não ordenada -->
+        <section>
+            <h3>  Lista ordenada </h3>
+            <!-- OL- Serve para ordenada  -->
+             <ol>
+                <!--  li - Serve para item da lista -->
+                <li> Rio de janeiro </li>
+             </ol>
+
+            <h3> Lista não ordenada </h3>
+            <!-- ul - Serve para lista não ordenada -->
+             <ul>
+                <li> Batata </li>
+                <li> Batata </li>
+             </ul>
+            
+
+        </section>
+        <!-- Imagens e vídeos -->
+        <section>
+            <!-- width - É a largura da imagem  -->
+            <!-- height- É o compromento da imagem -->
+            <h3>Imagem de cachorro na pria de óculos</h3>
+            <img width="100" src="./dog.jpg" alt="cachorro em uma prancha com um colar havaiano e óculos no mar" >
+            <h3>Imagem de cachorro correndo na praia </h3>
+            <img width="100" src="https://blog-static.petlove.com.br/wp-content/uploads/2022/10/15201829/pode-levar-cachorro-na-praia-Petlove.webp" alt="Cachorro correndo na água do mar" >
+            <h3>Vídeo de como pagar sua dívida mais rápido </h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Di4GY-4-Hgk?si=_7r5F7Z62m8Orzmj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            
+        </section>
+        <!-- formulários -->
+        <form>
+            <div>
+                <label for="nome">Nome: </label>
+                <input type="text" id="nome" placeholder="Batata" />
+            </div>
+            <div>
+                <label for="email">Email: </label>
+                <input type="email" id="email" />
+            </div>
+             <div>
+                <label for="senha">Senha: </label>
+                <input type="password" id="senha" />
+            </div>
+                
+            <div>
+                <label for="mensagem"> Mensagem: </label>
+                <textarea id="mensagem" placeholder="Batata" ></textarea>
+            </div>
+            <div>
+                <label for="idade">Idade</label>
+                <input type="number" id="idade" min="10" max="25">
+            </div>
+            <div>
+                <label for="cor">Cor:</label>
+                <input type="color" id="cor" />
+            </div>
+            <div>
+                <label for="anexo">Anexo:</label>
+                <input type="file" id="anexo">
+            </div>
+
+            <button type="reset">Limpar</button>
+            <button type="submit">Enviar</button>
+        </form>
+
+    </main>
+    <!-- Rodape -->
+    <footer>
+        <p>
+            &copy; Todos os direitos reservados
+        </p>
+    </footer>
+
+
+
 </body>
 </html>
