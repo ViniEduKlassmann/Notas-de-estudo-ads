@@ -1,59 +1,32 @@
-
-// Aprendendo utilizar o Express
-/*import express from 'express'
-
-const app = express()
-//            request, response
-app.get("/api", (req, res) => {
-
-    const num1 = Number(req.query.num1)
-    const num2 = Number(req.query.num2)
-    
-    res.send({ soma: num1 + num2})
-})
-
-app.listen(3000, () => {
-    console.log("servidor rodando na porta 3000")
-})
-
-console.log("Hello world")*/
 import express from 'express'
+import db from './repository/index.js'
 
 const app = express()
+app.use(express.json());
 //             request, response 
-app.get("/api/soma", (req, res) => {
-    const num1 = Number(req.query.num1)
-    const num2 = Number(req.query.num2)
+app.post("/api/v1/pessoa", (req, res) => {
+    const { id, cpf, email} = req.body
 
-    res.send({ soma: num1 + num2 })
+    if ( !id || !cpf || !email) {
+        // Serve para avisar que não foram enviadas todas as informações
+        res.send({message: "avisar que é para enviar tudo"})
+        return
+    }
+    db.push({ id, cpf, email })
+    res.send({ message: "Pessoa criada com sucesso"})
+
 })
 
-app.get("/api/multi/:num1/:num2", (req, res) => {
-    const num1 = Number(req.params.num1)
-    const num2 = Number(req.params.num2)
+app.get("/api/v1/pessoa/:id", (req, res) =>{
+    const id = req.params.id
 
-    res.send({ multi: num1 * num2 })
-})
+    const pessoa = db.find(p=> p.id === id)
 
-app.get("/api/med/:num1/:num2/:num3/:num4/:num5", (req, res) => {
-    const num1 = Number(req.params.num1)
-    const num2 = Number(req.params.num2)
-    const num3 = Number(req.params.num3)
-    const num4 = Number(req.params.num4)
-    const num5 = Number(req.params.num5)
-
-    const media = (num1 + num2 + num3 + num4 + num5) / 5
-
-    res.send({ media })
-})
-
-app.get("/api/temp/:temp1", (req, res) => {
-    const temp1 = Number(req.params.temp1)
-    
-
-    const tempfar = (temp1 + 160) / 5
-
-    res.send({ tempfar })
+    if(!pessoa){
+        res.status(404).send({message: "Pessoa não encontrada!"})
+        return
+    }
+    res,send({message: "Pessoa encontrada com sucesso", pessoa})
 })
 
 app.listen(3000, () => {
